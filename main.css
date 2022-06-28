@@ -1,9 +1,24 @@
+body{
+    background-color: #4f0568;
+}
 div.row div {
     height: 20px;
     width: 20px;
-    border: 1px solid black;
+    border: 1px  ;
     display: inline-block;
 }
 div.brick {
-    background-color: red;
+    background-color: rgb(172, 8, 248);
+}
+div.coin {
+    background: url('./image/coin.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+div#pacman {
+    background: url('./image/pacman.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
