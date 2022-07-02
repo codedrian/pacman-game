@@ -1,3 +1,7 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
 body{
     background-color: #4f0568;
 }
@@ -7,18 +11,35 @@ div.row div {
     border: 1px  ;
     display: inline-block;
 }
+.row {
+    line-height: 0px;
+}
 div.brick {
-    background-color: rgb(172, 8, 248);
+    background: url('./image/bricks.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+
+
 }
 div.coin {
     background: url('./image/coin.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    
 }
 div#pacman {
     background: url('./image/pacman.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    
+}
+div#world {
+position: relative;
 }
