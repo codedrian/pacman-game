@@ -2,35 +2,71 @@
 //TODO 2. Add scoreboard
 //TODO 3. Add Ghost
 //1=coin, 2=brick, 3=empty
-var world = [ 
-    [2,2,2,2,2,2,2,2,2,2],
-    [2,1,1,2,1,1,1,1,1,2],
-    [2,1,1,1,2,1,1,1,1,2],
-    [2,1,1,1,1,1,1,1,1,2],
-    [2,1,1,1,1,1,1,1,1,2],
-    [2,1,1,1,1,1,1,1,1,2],
-    [2,2,2,2,2,2,2,2,2,2]
-]
+let world = [
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+  [2, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2],
+  [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+  [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+  [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+  [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+  [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+  [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+];
 
-function showWorld() { 
-    let output = ' ';
-
-    for (let i=0; i<world.length; i++) {
-        output += "\n<div class='row'>";
-        for (let j=0; j<world[i].length; j++) {
-            if (world[i][j] == 2 ) {
-                output += "\n<div class='brick'></div>";
-            }
-            else if (world[i][j] == 1 ) {
-                output += "\n<div class='coin'></div>";
-            }
-        }
-        output += "\n</div>";
+let pacman = {
+  x: 0,
+  y: 0
+}
+function showWorld() { //function to show World
+  let output = "";
+for (let i = 0; i < world.length; i++) {
+    output += "<div class='row'>";
+        for (let j = 0; j < world[i].length; j++) {
+            if (world[i][j] == 2) 
+                output += "<div class='brick'></div>";
+             else if (world[i][j] == 1) 
+                output += "<div class='coin'></div>";
+            
+            if (world[i][j] == 0) 
+                output += "<div class='empty'></div>";     
     }
-    document.getElementById('world').innerHTML = output; 
+    output +="</div>";
+  }
+  console.log(output);
+  document.getElementById("world").innerHTML = output;
 }
 
-
-window.onload = function() {
-    showWorld();
+function showPacman() { //function to show Pacman
+  document.getElementById("pacman").style.left = pacman.x*20+ "px";
+  document.getElementById("pacman").style.top = pacman.y*20+ "px";
 }
+
+showWorld();
+showPacman();
+
+
+document.onkeydown = function (e) {
+  console.log(e);
+  console.log(e.keyCode); //TODO figure out why it is depricated
+
+  if (e.keyCode == 39 ) {
+    pacman.x++;
+  }
+  else if(e.keyCode == 40 ) {
+    pacman.y++;
+  }
+  else if (e.keyCode == 37) {
+    pacman.x--;
+  }
+  else if (e.keyCode == 38) {
+    pacman.y--;
+  }
+  if (world[pacman.y][pacman.x] == 1) {
+      world[pacman.y][pacman.x] = 0;
+      showWorld();
+  }
+  showPacman();
+}
+
